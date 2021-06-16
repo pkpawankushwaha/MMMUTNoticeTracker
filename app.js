@@ -1,4 +1,7 @@
 const express = require('express');
+const dotenv=require('dotenv')
+dotenv.config()
+const port =  process.env.PORT || 5000
 var cron = require('node-cron');
 const bodyParser = require('body-parser');
 const request = require('request');
@@ -21,8 +24,8 @@ app.use(
 app.set('view engine', 'ejs')
 
 
-app.listen(5000,function(){
-    console.log("listening")
+app.listen(port,function(){
+    console.log("listening"+toString(port))
 })
   
 
