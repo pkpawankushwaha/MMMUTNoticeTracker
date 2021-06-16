@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MMMUT Notice Tracker | learntothrive</title>
+    <!-- <link rel="stylesheet" href="../public/style.css"> -->
+    <style>.heading{
+        min-height: 10vh;
+        background-color: cornflowerblue;
+        padding: 10px 10px;
+        
+    }
+    
+    .main-landing{
+        
+        background-color: rgb(182, 245, 245);
+        min-height: 95vh;
+        padding: 10px;
+        margin-bottom: 30px;
+        
+    }
+    
+    .footer{
+        position: fixed;
+        top:95vh;
+        min-height: 5vh;
+        background-color: rgb(14, 30, 60);
+        text-align: center;
+        color: cornsilk;
+    
+    }
+    
+    
+    .boxes{
+        
+        padding: 10px 10px;
+        height: 60vh;
+        align-items: center;
+        align-content: center;
+    }
+    
+    .boxes-in{
+        
+        width: 100%;
+        height: 80%;
+        align-items: center;
+    }
+    
+    .boxes-in-title{
+        height:15%;
+        width: 100%;
+        position: relative;
+        
+        background-color: rgb(237, 154, 53);
+        overflow:hidden;
+    }
+    
+    .title{
+        float: left;
+        margin-left: 5px;
+        width: 60%;
+        font-size: 20px;
+    }
+    .btns{
+        float: right;
+       
+        min-width:5%;
+        margin-right: 10px;
+    }
+    
+    
+    .boxes-in-content{
+        display: flex;
+        position: relative;
+        height: 85%;
+        width: 100%;
+        background-color:rgb(235, 181, 114);
+        
+        text-align: justify;
+        padding-left:10px;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .boxes-in-content-new{
+        margin-top:0px;overflow-x: auto;
+                                overflow-y: auto;height: 100%;
+    }
+    
+    
+    .txtarea{
+        padding: 20px 20px;
+        height: 100%;
+        position: relative;
+    }
+    
+    .txtarea-notes{
+        overflow-x: hidden;
+        overflow-y: auto;
+        resize: none;
+        height: 40vh;
+       
+    }
+    
+    .txtarea-btns{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 20px;
+        
+    }
+    
+    .txtarea-btns-btn{
+        margin-left: 10px;
+    }
+    .prevarea{
+        overflow-x: hidden;
+        overflow-y: auto;
+        background-color: darkslateblue;
+        position: relative;
+        margin-right: 10px;
+        height:100%;
+        display:inline-flex;
+        width: 99%;
+    
+    }</style>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link href='https://fonts.googleapis.com/css?family=Caveat Brush' rel='stylesheet'>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container-fluid heading">
+        <div class="row" style="display: flex;">
+            <div class="col-md-8">
+                <h1 style="font-family:Caveat Brush;font-size: 36px;color:cornsilk;" rel='stylesheet'>MMMUT Notice Tracker</h1>
+            </div>
+            <div class="col-md-4">
+                <form method="POST" action="/">
+                    <input type="email" name="email" placeholder="Enter your email id">
+                    <input type="submit" value="Subscribe" name="submit">
+
+                </form> 
+               
+                <% if(data[0]['subs_msg']!=null){
+                    %> 
+                    <%= data[0]['subs_msg'] %>
+                    <%
+                }%>
+
+            </div>
+            
+         </div>
+    </div>
+    <div class="container-fluid main-landing">
+        
+            <div class="alert alert-dark" role="alert">
+                MMMUT Notice Tracker is an web app to keep track of the college notices and remind students of the notice as earliest.
+                <br><br>The key features are
+                <ul>
+                <li>Display Notices at its own web page</li>
+                <li>Allows students to subscribe for getting mails.</li>
+                <li>Informs subscribers whenever a new notice is uploaded, via email</li>
+                
+            </ul>
+            </div>
+        
+       <div class="row container" >
+            
+        <% if(data !== null){ %>
+            <table id="table" border="1" style="width: 100%;" >  
+                <thead>  
+                    <tr>  
+                        <th>Notice</th>  
+                        <th>Link</th>  
+                    </tr>  
+                </thead>  
+                 <tbody>  
+                 <% data.forEach(function (row) { %>
+                    <tr>  
+                        <td><%= row.notice %></td>  
+                        <td>
+                            <% if(row.link!=='#'){ %>
+                            <a target="_blank" href="http://mmmut.ac.in/<%= row.link %>" >Download</a>
+                            <% } %>
+                        </td>
+                    </tr>                                   
+                 <% }) %>
+                 </tbody>
+            </table> 
+            
+          <% } %>
+            <br><BR><BR><BR><BR>
+       </div>
+    </div>
+    <div class="container-fluid footer">
+        <p>Open-source <i class="fa fa-github w3-large"></i> | Made in <i class="fa fa-heart w3-large" ></i> by Pawan Kushwaha</p>
+    </div>
+    </body>
+</html>
