@@ -1,10 +1,10 @@
 const mysql= require('mysql')
 
 const conn=mysql.createConnection({
-    host: 'localhost', // Replace with your host name
-    user: 'root',      // Replace with your database username
-    password: '',      // Replace with your database password
-    database: 'notice_tracker' // // Replace with your database Name
+    host: 'sql6.freemysqlhosting.net', // Replace with your host name
+    user: 'sql6419435',      // Replace with your database username
+    password: 'NaE4qiEgYu',      // Replace with your database password
+    database: 'sql6419435' // // Replace with your database Name
 });
 
 
